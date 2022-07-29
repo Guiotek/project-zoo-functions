@@ -24,12 +24,16 @@ describe('Testes da função getOpeningHours', () => {
     }
     {
       const actual = getOpeningHours('Wednesday', '09:00-PM');
-      const expected = 'The zoo is open';
+      const expected = 'The zoo is closed';
       expect(actual).toEqual(expected);
     }
     {
       const actual = getOpeningHours('Sunday', '09:c0-AM');
-      expect(actual).toThrow(/^The minutes should represent a number$/)
+      expect(actual).toThrow();
+    }
+    {
+      const actual = getOpeningHours('Thu', '09:c0-AM');
+      expect(actual).toThrow();
     }
   });
 });
