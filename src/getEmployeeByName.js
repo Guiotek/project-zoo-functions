@@ -13,6 +13,7 @@ function getEmployeeByName(employeeName) {
     if (element.lastName === employeeName) {
       return element.lastName;
     }
+    return undefined;
   });
   return employee;
 }
