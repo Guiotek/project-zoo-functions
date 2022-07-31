@@ -27,13 +27,21 @@ describe('Testes da função getOpeningHours', () => {
       const expected = 'The zoo is closed';
       expect(actual).toEqual(expected);
     }
-    {
-      const actual = getOpeningHours('Sunday', '09:c0-AM');
-      expect(actual).toThrow();
-    }
-    {
-      const actual = getOpeningHours('Thu', '09:c0-AM');
-      expect(actual).toThrow();
-    }
+  });
+  it('ao passar argumentos, retorna um Erro nos minutos', () => {
+    const actual = getOpeningHours('Sunday', '09:c0-AM');
+    expect(actual).toThrow();
+  });
+  it('ao passar argumentos, retorna um Erro no AM/PM', () => {
+    const actual = getOpeningHours('Friday', '09:00-ZM');
+    expect(actual).toThrow();
+  });
+  it('ao passar argumentos, retorna um Erro nas Horas', () => {
+    const actual = getOpeningHours('Saturday', 'C9:00-AM');
+    expect(actual).toThrow();
+  });
+  it('ao passar argumentos, retorna um Erro no Dia', () => {
+    const actual = getOpeningHours('Thu', '09:00-AM');
+    expect(actual).toThrow();
   });
 });
