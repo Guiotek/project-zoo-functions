@@ -21,7 +21,7 @@ function getRelatedEmployees(managerId) {
   // seu código aqui
   const trueAndFalse = isManager(managerId);
   if (trueAndFalse === true) {
-    let array = [];
+    const array = [];
     const a = (employee) => {
       employee.managers.forEach((element) => {
         if (element === managerId) {
